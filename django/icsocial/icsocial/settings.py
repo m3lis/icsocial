@@ -122,9 +122,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'friendship',
     'location',
-    'events',
     'search',
-    'profiles',
     'comments', 
     )
 
