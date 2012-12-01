@@ -35,6 +35,17 @@ class Comment(models.Model):
 	time = models.TimeField(null=True)
 	subcom = models.ForeignKey(SubComment, related_name="com2", null=True)
 
+VOTE_CHOICES = (
+    ('A', 'Agree'),
+    ('D', 'Disagree'),
+    ('O', 'Obsolete'),
+)
+
+class Vote(models.Model):
+	category = models.CharField(max_length=1, choices=VOTE_CHOICES)
+	user_voted = models.ForeignKey(User)
+	comment_voted = models.ForeignKey(Comment)
+
 POST_CHOICES = (
     ('N', 'News'),
     ('Q', 'Questions'),

@@ -86,5 +86,55 @@ class SearchTestCase(unittest.TestCase):
 		self.assertEqual(calc_comments().count(),1)
 		self.assertEqual(calc_questions().count(),1)
 
+	def test_get_name(self):
+		l = Location()
+		l.name = 'Skempton'
+		l.nickname = 'Ske'
+		l.save()
+		self.assertEqual(get_names('Skempton').count(),1)
+
+	
+	def test_add_vote(self):
+		user1 = User.objects.create_user('Val','j@j.com','j1')
+		user2 = User.objects.create_user('Kostis','j@j.com','j1')
+		user3 = User.objects.create_user('Vakis','j@j.com','j1')
+		c = Comment()
+		c.user = user1
+		c.save()
+		c1 = Comment()
+		c1.user = user1
+		c1.save()
+		vote = Vote();
+		vote.category = 'A'
+		vote.user_voted = user2
+		vote.comment_voted = c
+		add_vote(vote)
+		vote2 = Vote();
+		vote2.category = 'A'
+		vote2.user_voted = user2
+		vote2.comment_voted = c1
+		add_vote(vote2)
+		vote3 = Vote();
+		vote3.category = 'A'
+		vote3.user_voted = user3
+		vote3.comment_voted = c1
+		add_vote(vote3)
+		self.assertEqual(calc_votes_agree().count(),3)
+		self.assertEqual(calc_votes_user_agree(user2).count(),2)
+
+	def test_delete_vote(self):
+		user1 = User.objects.create_user('Kassis','j@j.com','j1')
+		user2= User.objects.create_user('Kouppari','m@m.com','m1')
+		c = Comment()
+		c.user = user1
+		c.save()
+		vote = Vote();
+		vote.category = 'A'
+		vote.user_voted = user2
+		vote.comment_voted = c
+		add_vote(vote)
+		delete_vote(user2,c)
+		self.assertEqual(calc_votes_agree().count(), 3)
+
 
 

@@ -44,13 +44,12 @@ def add_comments(user1):
 
 #Locations
 def get_names(na):
-	b = Location.objects.filter(name__contains=na)
+	b = Location.objects.filter(name=na)
 	return b
 
 def get_address(ad):
-   add = Location.objects.filter(address__contains=na)
+   add = Location.objects.filter(address=na)
    return add
-
 
 # Questions
 def calc_questions():
@@ -65,11 +64,30 @@ def calc_news():
 def add_news(q):
 	q.save()
 
+def add_vote(vote):
+	vote.save()
 
+def calc_votes_agree():
+	return Vote.objects.filter(category='A')
 
+def calc_votes_user_agree(user):
+	return Vote.objects.filter(category='A',user_voted=user)
 
+def calc_votes_disagree():
+	return Vote.objects.filter(category='D')
 
+def calc_votes_user_disagree(user):
+	return Vote.objects.filter(category='D',user_voted=user)
 
+def calc_votes_obsolete():
+	return Vote.objects.filter(category='O')
+
+def calc_votes_user_obsolete(user):
+	return Vote.objects.filter(category='O',user_voted=user)
+
+def delete_vote(u1, c1):
+	c=Vote.objects.filter(user_voted = u1,comment_voted = c1)
+	c.delete()
 
 
 
