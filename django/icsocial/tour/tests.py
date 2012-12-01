@@ -57,19 +57,34 @@ class SearchTestCase(unittest.TestCase):
 		self.assertEqual(get_subscribers("Open Day").count(),2)
 		# self.assertEqual(get_date("Open Day"), (2010,12,12))
 
-class RootComments(unittest.TestCase):
-	def test_retrieve_user_comments(self):
-		Comment.objects.create(user=1, text='Queens Tower is tall ', date='2012-07-08', time='12:03')
-		Comment.objects.create(user=3, text='Queens Tower is white', date='2012-07-09', time='11:15')	
-		Comment.objects.create(user=4, text='Queens Tower is beaut', date='2012-07-06', time='15:47')
-		SubComment.objects.create(user=2, parent=1, text='Queens Tower is tall', date='2012-07-08', time='12:03')
-		SubComment.objects.create(user=6, parent=1, text='Queens Tower is tall', date='2012-07-08', time='12:03')
-		SubComment.objects.create(user=5, parent=3, text='Queens Tower is tall', date='2012-07-08', time='12:03')
-		self.assertEqual(total_user_comments(1), 1)
+	def test_total_user_comments(self):
+		user_object = User.objects.create_user('Crestas','j@j.com','j1')
+		subcomment = SubComment()
+		comment = Comment()
+		comment.user = user_object
+		comment.save()
+		comment2 = Comment()
+		comment2.user = user_object
+		comment2.save()
+		subcomment.user = user_object
+		subcomment.save()
+		self.assertEqual(total_user_comments(user_object),3)
 
-	def test_number_of_children(self):
-		SubComment.objects.create(user=6, parent=1, text='Queens Tower is tall', date='2012-07-08', time='12:03')
-		self.assertEqual(total_subs(), 1)
+	def test_add_comment(self):
+		user = User.objects.create_user('Melis','j@j.com','j1')
+		add_comments(user)
+		l = Location()
+		l.name = 'Huxley'
+		l.nickname = 'Hux'
+		l.save()
+		q = QuestionsNews()
+		q.owner_id = user
+		q.text = 'Why?'
+		q.location = l
+		q.category = 'Q'
+		add_questions(q)
+		self.assertEqual(calc_comments().count(),1)
+		self.assertEqual(calc_questions().count(),1)
 
 
 

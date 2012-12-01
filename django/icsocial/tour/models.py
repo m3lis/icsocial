@@ -22,23 +22,30 @@ class Tour(models.Model):
 	def get_owner_id(self):
 		return self.owner_id
 
-class Comment(models.Model):
-	user = models.IntegerField()
-	text = models.CharField(max_length=200)
-	date = models.DateField()
-	time = models.TimeField()
-	#parent pou nan question 
-	#question parent location j admin
-	#methodns gia comments
-
 class SubComment(models.Model):
-	user = models.IntegerField()
-	parent = models.IntegerField()
+	user = models.ForeignKey(User)
 	text = models.CharField(max_length=200)
-	date = models.DateField()
-	time = models.TimeField()
+	date = models.DateField(null=True)
+	time = models.TimeField(null=True)
 
+class Comment(models.Model):
+	user = models.ForeignKey(User)
+	text = models.CharField(max_length=200)
+	date = models.DateField(null=True)
+	time = models.TimeField(null=True)
+	subcom = models.ForeignKey(SubComment, related_name="com2", null=True)
 
+POST_CHOICES = (
+    ('N', 'News'),
+    ('Q', 'Questions'),
+)
+
+class QuestionsNews(models.Model):
+	owner_id =  models.ForeignKey(User)
+	text = models.CharField(max_length=200)
+	location = models.ForeignKey(Location)
+	category = models.CharField(max_length=1, choices=POST_CHOICES)
+	users = models.ForeignKey(Comment, related_name="com", null=True)
 
 
 
