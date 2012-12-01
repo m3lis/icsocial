@@ -7,7 +7,6 @@ Replace this with more appropriate tests for your application.
 
 from django.utils import unittest
 from friendship.models import *
-from friendship.views import *
 from friendship.methods import *
 from django.test import TestCase
 from django.contrib.auth.models import User
@@ -26,9 +25,9 @@ class FriendTestCase(unittest.TestCase):
 		self.assertEqual(is_follower(id_user2,id_user1),True)
 
 	def test_get_followers(self):
-		friends = Friend();
-		user = friends.id_user = User.objects.create_user('Maria','j@j.com','j1')
-		follower = friends.id_follower = User.objects.create_user('Yiannis','m@m.com','m1')
-		friends.save()
+		f = Friend();
+		user = f.id_user = User.objects.create_user('Maria','j@j.com','j1')
+		follower = f.id_follower = User.objects.create_user('Yiannis','m@m.com','m1')
+		f.save()
 		self.assertTrue(follower in get_followers(user))
 		
