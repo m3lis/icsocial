@@ -1,0 +1,310 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>Gallery</title> 
+
+	<!-- Le styles -->
+	<link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <style>
+    /* This rule is read by Galleria to define the gallery height: */
+    #galleria{height:480px}
+    </style>
+
+    <!-- load jQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+
+    <!-- load Galleria -->
+    <script src="galleria/galleria-1.2.8.min.js"></script>
+
+    <style type="text/css">
+    body {
+    	padding-top: 60px;
+    	padding-bottom: 40px;
+    }
+    .shift-left{
+    	margin-left:-45px;
+    }
+    .shift-left2{
+    	margin-left:67px;      
+    }
+
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+    	font-size: 16px;
+    	font-weight: bold;
+    	text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    .ffooter{position: fixed;
+    	bottom:-20px; left:10px;width:100%;
+    }
+
+    </style>
+
+
+</head>
+<body>
+
+	<!--NAVBAR-->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="#">Social-IC</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li><a href="indexAlt.html">Home</a></li>
+						<li class="dropdown active">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tour <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Buildings</a></li>
+								<li><a href="#">Tours</a></li>
+								<li><a href="#">My Tours</a></li>                  
+							</ul>
+						</li>                 <li><a href="campus.html">Campus</a></li>
+						<li><a href="#events">Events</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">About social-IC</a></li>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">About Technology</a></li>
+							</ul>
+						</li>     
+					</ul>
+					<ul class="nav pull-right">
+						<style>
+						.midAl
+						{
+							margin-top:5px;
+						}
+						</style>
+						<li><input type="text" class="midAl span3 search-query" name="keyword" id="keyword"placeholder="Search..."/></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">My Profile</a></li>
+								<li><a href="#">Account Settings</a></li>
+								<li><a href="#">Logout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+	<!NAVBAR END-->
+
+	<div class="container pagination-centered">
+
+		<div class="row">
+			<div class="span12">
+				<div class="btn-group" text-align="center">
+					<a type="button" class="btn btn-info" href="">Ask Question</a>
+					<a type="button" class="btn btn-info" href="">Add News</a>
+					<a type="button" class="btn btn-info" href="">Check-In</a>
+				</div>
+				<br/><br/>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="span12">
+
+				<div id="galleria">
+
+					<a href="img/img1.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img1.jpg">
+					</a>
+					<a href="img/img2.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img2.jpg">
+					</a>
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a>         
+					<a href="img/img1.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img1.jpg">
+					</a>
+					<a href="img/img2.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img2.jpg">
+					</a>
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a>  
+					<a href="img/img1.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img1.jpg">
+					</a>
+					<a href="img/img2.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img2.jpg">
+					</a>
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a>  
+					<a href="img/img1.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img1.jpg">
+					</a>
+					<a href="img/img2.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img2.jpg">
+					</a>
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a>
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a> 
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a> 
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a> 
+					<a href="img/img4.jpg">
+						<img data-title="Huxley Building"
+						data-description="Huxley Description"
+						src="img/img4.jpg">
+					</a>												  
+				</div>
+				<script>
+
+    // Load the classic theme
+    Galleria.loadTheme('galleria/themes/classic/galleria.classic.min.js');
+
+    // Initialize Galleria
+    Galleria.run('#galleria');
+
+    </script>
+</div>
+</div>
+</div>
+
+<div class="container marketing pagination-centered">
+	<div class="row">
+		<div class="span12">
+			<div class="pull-left">
+				<h5>Recently here: </h5>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>  
+			</div>
+			<div class="pull-right">
+				<h5>See also: </h5>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>
+				<img src="img2.jpg" width="40" height="40"/>  
+			</div>
+		</div>
+	</div>
+</div>
+
+<br/>
+
+<div class="container pagination-centered">
+	<div class="row">
+		<div class="span12">
+			<h5>News Feed: </h5>
+
+			<table class="table table-hover"> <!-- or table-striped -->
+				<thead>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="cursor:pointer" onclick="window.location.href = '#'">Q: Who are you?</td>
+					</tr>
+					<tr>
+						<td style="cursor:pointer" onclick="window.location.href = '#'">N: New building is being built</td>    
+					</tr>       
+					<tr>
+						<td style="cursor:pointer" onclick="window.location.href = '#'">Q: Long story is now being asked blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah...<a href="#">see more</a></td>   
+					</tr> 
+					<tr>
+						<td style="cursor:pointer" onclick="window.location.href = '#'">Q: Who are you?</td>
+					</tr>               
+					<tr>
+						<td style="cursor:pointer" onclick="window.location.href = '#'">Q: Who are you?</td>   
+					</tr> 
+					<tr>
+						<td style="cursor:pointer" onclick="window.location.href = '#'">Q: Who are you?</td>   
+					</tr> 
+					<tr>
+						<td style="cursor:pointer" onclick="window.location.href = '#'">Q: Who are you?</td>   
+					</tr>   
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<br/>
+
+<div class="ffooter">
+	<div class="row">
+		<form class="well form-search">
+			<div class="span1 shift-left"></div>
+			<input type="text" class="span3 search-query" placeholder="Search..."/>
+			<button class="btn">Search</button>
+			<div class="pull-right">
+				<p class="pull-right">&copy; Imperial College London, 2012 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a> &middot; <a href="#">Back to top</a></p>
+			</div>
+		</form>
+	</div>
+</div>
+
+</body>
+</html>
