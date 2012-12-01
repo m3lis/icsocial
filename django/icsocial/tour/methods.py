@@ -27,6 +27,14 @@ def total_user_comments(id):
 def total_subs():
 	return SubComment.objects.count()
 
+def get_names(na):
+	b = Location.objects.filter(name__contains=na)
+	return b
+
+def get_address(ad):
+   add = Location.objects.filter(address__contains=na)
+   return add
+
 
 
 

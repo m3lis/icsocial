@@ -123,7 +123,6 @@ INSTALLED_APPS = (
     'friendship',
     'search',
     'tour',
-    'location',
     )
 
 # A sample logging configuration. The only tangible logging
