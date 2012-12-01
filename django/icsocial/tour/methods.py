@@ -1,5 +1,5 @@
 # Create your views here.
-from tour.models import Tour
+from tour.models import *
 from django.contrib.auth.models import User
 
 def get_owner(name_of_tour):
@@ -20,6 +20,12 @@ def get_date(name_of_tour):
 	bs = Tour.objects.get(name=name_of_tour)
 	date = bs.tour_date
 	return date
+
+def total_user_comments(id):
+	return Comment.objects.filter(user=id).count()
+
+def total_subs():
+	return SubComment.objects.count()
 
 
 

@@ -8,7 +8,7 @@ Replace this with more appropriate tests for your application.
 
 from django.utils import unittest
 from django.test import TestCase
-from tour.models import Tour
+from tour.models import *
 from tour.methods import *
 from django.contrib.auth.models import User
 
@@ -56,6 +56,20 @@ class SearchTestCase(unittest.TestCase):
 		tour.save()
 		self.assertEqual(get_subscribers("Open Day").count(),2)
 		# self.assertEqual(get_date("Open Day"), (2010,12,12))
+
+class RootComments(unittest.TestCase):
+	def test_retrieve_user_comments(self):
+		Comment.objects.create(user=1, text='Queens Tower is tall ', date='2012-07-08', time='12:03')
+		Comment.objects.create(user=3, text='Queens Tower is white', date='2012-07-09', time='11:15')	
+		Comment.objects.create(user=4, text='Queens Tower is beaut', date='2012-07-06', time='15:47')
+		SubComment.objects.create(user=2, parent=1, text='Queens Tower is tall', date='2012-07-08', time='12:03')
+		SubComment.objects.create(user=6, parent=1, text='Queens Tower is tall', date='2012-07-08', time='12:03')
+		SubComment.objects.create(user=5, parent=3, text='Queens Tower is tall', date='2012-07-08', time='12:03')
+		self.assertEqual(total_user_comments(1), 1)
+
+	def test_number_of_children(self):
+		SubComment.objects.create(user=6, parent=1, text='Queens Tower is tall', date='2012-07-08', time='12:03')
+		self.assertEqual(total_subs(), 1)
 
 
 
