@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <title>Tour</title>
+
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
+  <!-- Le styles -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+    .shift-left{
+      margin-left:-35px;
+    }
+    </style>
+
+    <style>
+    /* Downsize the brand/project name a bit */
+    .navbar .brand {
+      font-size: 16px;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+    .ffooter{position: fixed;
+      bottom:-20px; width:100%;}
+      </style>
+
+      <style>
+      body {
+        font-family: sans-serif;
+        font-size: 14px;
+      }
+      #map_canvas {
+        height: 480px;
+        width: 640;
+        margin-bottom: 0.6em;
+      }
+      input {
+        border: 1px solid  rgba(0, 0, 0, 0.5);
+      }
+      input.notfound {
+        border: 2px solid  rgba(255, 0, 0, 0.4);
+      }
+      </style>
+
+      <script>
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(51.498812, -0.1775598),
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+          mapOptions);
+
+        var input = document.getElementById('keyword');
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+          map: map
+        });
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+          infowindow.close();
+          marker.setVisible(false);
+          input.className = '';
+          var place = autocomplete.getPlace();
+          if (!place.geometry) {
+            // Inform the user that the place was not found and return.
+            input.className = 'notfound';
+            return;
+          }
+
+          // If the place has a geometry, then present it on a map.
+          if (place.geometry.viewport) {
+            map.fitBounds(place.geometry.viewport);
+          } else {
+            map.setCenter(place.geometry.location);
+            map.setZoom(17);  // Why 17? Because it looks good.
+          }
+          var image = new google.maps.MarkerImage(
+            place.icon,
+            new google.maps.Size(71, 71),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(17, 34),
+            new google.maps.Size(35, 35));
+          marker.setIcon(image);
+          marker.setPosition(place.geometry.location);
+
+          var address = '';
+          if (place.address_components) {
+            address = [
+            (place.address_components[0] && place.address_components[0].short_name || ''),
+            (place.address_components[1] && place.address_components[1].short_name || ''),
+            (place.address_components[2] && place.address_components[2].short_name || '')
+            ].join(' ');
+          }
+
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+          infowindow.open(map, marker);
+        });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+</head>
+
+<body>
+
+  <!N--AVBAR-->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Social-IC</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tour <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="buildingsAlt.html">Buildings</a></li>
+                <li><a href="tours.html">Tours</a></li>
+              </ul>
+            </li>
+            <li><a href="">Campus</a></li>
+            <li><a href="#events">Events</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">About social-IC</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">About Technology</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form pull-right">
+            <input class="span2" type="text" placeholder="Username">
+            <input class="span2" type="password" placeholder="Password">
+            <button type="submit" class="btn btn-info">Login</button>
+            <button type="button" class= "btn btn-primary" data-toggle="modal" data-target="#signUp">Sign Up</a></li>
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <!NAVBAR END-->
+
+    <!-- Modal for Sign Up
+    ==================================================-->
+    <div id="signUp" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Registration</h3>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="registerHere" method='post' action=''>
+          <fieldset>
+
+            <div class="control-group">
+              <label class="control-label">Name</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge" id="user_uname" name="user_uname" rel="popover">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Email</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge" id="user_email" name="user_email" rel="popover">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Username</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge" id="user_name" name="user_name" rel="popover">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Password</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge" type="password" id="new_password" name="new_password" rel="popover">
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Confirm Password</label>
+              <div class="controls">
+                <input type="text" class="input-xlarge" type="password" id="new_password2" name="new_password2" rel="popover">
+              </div>
+            </div>
+
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        <button class="btn btn-primary">Register</button>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!--CODE FOR ONE TOUR-->
+      <div class="row">
+        <div class="span3">
+          <p><a href=""><img src="img3.jpg" width="190" height="70"/></a></p>
+        </div>
+        <div class="row span9">
+          <h5>NAME</h5>
+          <h5>DATE</h5>          
+          <h5>NUMBER Subscribers:</h5>
+          <img src="img2.jpg" width="40" height="40"/>
+          <img src="img2.jpg" width="40" height="40"/>
+          <img src="img2.jpg" width="40" height="40"/>
+          <img src="img2.jpg" width="40" height="40"/>
+          <img src="img2.jpg" width="40" height="40"/>
+        </div>
+      </div>
+    </br>
+    <!--END OF CODE FOR ONE TOUR-->
+
+
+    <h5>Buildings: </h5>
+
+    <!--CODE FOR ONE EXHIBIT-->
+    <div class="row">
+      <div class="span3">
+        <p><a href="huxley.html"><img src="img1.jpg" width="200" height="75"/></a></p>
+      </div>
+      <div class="span9">
+        <p>Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxleydesc Huxleydesc Huxleydesc Huxley desc Huxleydesc Huxleydesc Huxley</p>
+      </div>
+      <div class="row span9">
+        <h5>Users nearby: </h5>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+      </div>
+    </div>
+  </br>
+  <!--END OF CODE FOR ONE EXHIBIT-->
+
+  <!--CODE FOR ONE EXHIBIT-->
+  <div class="row">
+    <div class="span3">
+      <p><a href="huxley.html"><img src="img1.jpg" width="200" height="75"/></a></p>
+    </div>
+    <div class="span9">
+      <p>Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxleydesc Huxleydesc Huxleydesc Huxley desc Huxleydesc Huxleydesc Huxley</p>
+    </div>
+    <div class="row span9">
+      <h5>Users nearby: </h5>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+    </div>
+  </div>
+</br>
+<!--END OF CODE FOR ONE EXHIBIT-->
+
+<!--CODE FOR ONE EXHIBIT-->
+<div class="row">
+  <div class="span3">
+    <p><a href="huxley.html"><img src="img1.jpg" width="200" height="75"/></a></p>
+  </div>
+  <div class="span9">
+    <p>Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxley desc Huxleydesc Huxleydesc Huxleydesc Huxley desc Huxleydesc Huxleydesc Huxley</p>
+  </div>
+  <div class="row span9">
+    <h5>Users nearby: </h5>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+  </div>
+</div>
+</br>
+<!--END OF CODE FOR ONE EXHIBIT-->
+
+<h5>Map: </h5>
+<div id="map_canvas"></div>
+
+</br></br>
+</div>
+
+<div class="ffooter">
+  <div class="row">
+    <form class="well form-search">
+      <div class="span1 shift-left"></div>
+      <input type="text" class="span3 search-query" name="keyword" id="keyword"placeholder="Search..."/>
+      <button class="btn">Search</button>
+      <div class="pull-right">
+        <p class="pull-right">&copy; Imperial College London, 2012 &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
