@@ -17,8 +17,8 @@ class SearchTestCase(unittest.TestCase):
 	def test_get_owner(self):
 		user1 = User.objects.create_user('John','j@j.com','j1')
 		user2= User.objects.create_user('Mike','m@m.com','m1')
-		user3= User.objects.create_user('kokoko','m@m.com','m1')
-		user4= User.objects.create_user('lalal','m@m.com','m1')
+		user3= User.objects.create_user('Niki','m@m.com','m1')
+		user4= User.objects.create_user('Nikolas','m@m.com','m1')
 		tour = Tour()
 		tour.id = "1"
 		tour.name = "hello"
@@ -27,10 +27,10 @@ class SearchTestCase(unittest.TestCase):
 		self.assertEqual(get_owner("hello"),'John')
 
 	def test_delete_tour(self):
-		user1 = User.objects.create_user('kokokoko','j@j.com','j1')
-		user2= User.objects.create_user('kk','m@m.com','m1')
-		user3= User.objects.create_user('ff','m@m.com','m1')
-		user4= User.objects.create_user('dd','m@m.com','m1')
+		user1 = User.objects.create_user('Kokos','j@j.com','j1')
+		user2= User.objects.create_user('Michael','m@m.com','m1')
+		user3= User.objects.create_user('Sakis','m@m.com','m1')
+		user4= User.objects.create_user('Anna','m@m.com','m1')
 		tour = Tour()
 		tour.id = "1"
 		n = tour.name = "hello"
@@ -41,12 +41,12 @@ class SearchTestCase(unittest.TestCase):
 		n1 = tour1.name = "hello"
 		tour1.owner_id = user1
 		tour1.save()
-		self.assertEqual(get_owner("hello"), "kokokoko")
+		self.assertEqual(get_owner("hello"), "Kokos")
 
 	def test_get_subsribers(self):
-		user1= User.objects.create_user('Mar2','j@j.com','j1')
-		user3= User.objects.create_user('koupepia','m@m.com','m1')
-		user4= User.objects.create_user('Ginnis1','m@m.com','m1')
+		user1= User.objects.create_user('Dan','j@j.com','j1')
+		user3= User.objects.create_user('Giorgos','m@m.com','m1')
+		user4= User.objects.create_user('Giannis','m@m.com','m1')
 		tour = Tour()
 		tour.owner_id = user1
 		tour.save()

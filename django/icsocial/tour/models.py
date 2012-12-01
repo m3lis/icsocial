@@ -27,6 +27,9 @@ class Comment(models.Model):
 	text = models.CharField(max_length=200)
 	date = models.DateField()
 	time = models.TimeField()
+	#parent pou nan question 
+	#question parent location j admin
+	#methodns gia comments
 
 class SubComment(models.Model):
 	user = models.IntegerField()

@@ -1,14 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Friend(models.Model):
-   id_user = models.IntegerField()
-   id_follower = models.IntegerField()
+	id_user = models.ForeignKey(User,related_name="id1")
+	id_follower = models.ForeignKey(User,related_name="id2")
 
-   def __unicode__(self):
-      return self.id_user
+	def __unicode__(self):
+		return self.id_user
 
-   def get_friends(self):
-      return self.id_follower
+	def get_friends(self):
+		return self.id_follower
 
   
 
