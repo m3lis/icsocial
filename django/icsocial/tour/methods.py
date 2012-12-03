@@ -9,6 +9,11 @@ def get_owner(name_of_tour):
 	owner_username = bs.owner_id.username
 	return owner_username
 
+def get_name(id1):
+	bs = Tour.objects.get(id=id1)
+	name_of_tour = bs.name
+	return name_of_tour
+
 def delete_tour(name_of_tour):
 	bs = Tour.objects.filter(name=name_of_tour)
 	bs.delete()
@@ -18,8 +23,8 @@ def get_subscribers(name_of_tour):
 	subscribers_list = bs.subscribers
 	return subscribers_list
 
-def get_date(name_of_tour):
-	bs = Tour.objects.get(name=name_of_tour)
+def get_date(id1):
+	bs = Tour.objects.get(id=id1)
 	date = bs.tour_date
 	return date
 

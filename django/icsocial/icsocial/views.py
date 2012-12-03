@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login as user_login, logout as user_logout
-
+from tour.methods import *
 
 
 
@@ -50,3 +50,25 @@ def place(request,nick):
 
 def profile(request,nick):
   return HttpResponse("profile:" + nick)
+
+def tours(request):
+	r= []
+	tour = Tour.objects.all()
+
+	for i in Tour.objects.all().values_list('id', flat=True):
+		r.insert(len(r),i)
+
+	for elem in r:
+		name = get_name(elem)
+		tour_date = get_date(elem)
+		subscribers = get_subscribers(name)
+		c = {'name':name, 'tour_date':tour_date, 'subscribers':subscribers, 'tour':tour}
+		return render_to_response("tours.html",c)
+
+def buildings(request):
+	return render_to_response("buildings.html")	
+
+
+
+
+
