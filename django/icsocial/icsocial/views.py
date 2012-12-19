@@ -8,7 +8,7 @@ from tour.methods import *
 
 def nav(flag):
 	#if flag == True then logged in else guest
-	n = {'home':'home/','tour': {'buildings':'/places/','tours':'/tours/'},\
+	n = {'home':'home/','tour': {'buildings':'/places/','tours':'/tours/', 'mytours':'/mytours/'},\
 	 	'about':{'social_ic':'/about/icsocial/','us':'/about/us/',\
 	 	'tech':'/about/tech/'},'campus':'/campus/','logout':'/logout'}
 	return n
@@ -65,8 +65,43 @@ def tours(request):
 		c = {'name':name, 'tour_date':tour_date, 'subscribers':subscribers, 'tour':tour}
 		return render_to_response("tours.html",c)
 
+def mytours(request):
+	user = request.user
+	if user.is_authenticated():
+   	 user_id=user.pk
+	r= []
+	tour = Tour.objects.filter(owner_id= user_id)
+
+	for i in Tour.objects.all().values_list('id', flat=True):
+		r.insert(len(r),i)
+
+	for elem in r:
+		name = get_name(elem)
+		tour_date = get_date(elem)
+		subscribers = get_subscribers(name)
+		c = {'name':name, 'tour_date':tour_date, 'subscribers':subscribers, 'tour':tour}
+		return render_to_response("myTours.html",c)
+
+def add_tour(request):
+	tour = Tour();
+	tour.name = request.POST['name']
+	tour.tour_date = request.POST['tour_date']	
+	tour.description = request.POST['description']
+	tour.save()
+	c = {'name':tour.name, 'tour_date':tour.tour_date, 'subscribers':tour.subscribers}
+	return render_to_response("myTours.html",c)
+
 def buildings(request):
-	return render_to_response("buildings.html")	
+	r= []
+	building = Location.objects.all()
+	for i in Location.objects.all().values_list('id', flat=True):
+		r.insert(len(r),i)
+
+	for elem in r:
+		name = get_build_name(elem)
+		description = get_build_desc(elem)
+		c = {'name':name, 'description':description, 'building':building}
+		return render_to_response("buildings.html",c)
 
 
 
