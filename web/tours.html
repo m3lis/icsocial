@@ -45,115 +45,123 @@
     </head>
     <body>
 
-      <!--NAVBAR-->
-      <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">Social-IC</a>
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li><a href="indexAlt.html">Home</a></li>
-                <li class="dropdown active">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tour <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="buildingsAlt.html">Buildings</a></li>
-                    <li><a href="#">Tours</a></li>
-                    <hr style="margin: 5px;" />                    
-                    <li><a href="myTours.html">My Tours</a></li>                  
-                  </ul>
-                </li>              
-                   <li><a href="campus.html">Campus</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">About social-IC</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">About Technology</a></li>
-                  </ul>
-                </li>     
-              </ul>
-              <ul class="nav pull-right">
-                <style>
-                .midAl
-                {
-                  margin-top:5px;
-                }
-                </style>
-                <li><input type="text" class="midAl span3 search-query" name="keyword" id="keyword"placeholder="Search..."/></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">My Profile</a></li>
-                    <li><a href="#">Account Settings</a></li>
-                    <li><a href="#">Logout</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div>
-        </div>
-      </div>
-      <!NAVBAR END-->
+<!-- Modal for Account Settings
+  ==================================================-->
+  <div id="accSettings" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Account Settings</h3>
+    </div>
+    <div class="modal-body">
+      <form class="form-horizontal" id="changeSettings" method='post' action=''>
+        <fieldset>
 
+          <div class="control-group">
+            <label class="control-label">Change Name</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="user_uname" name="user_uname" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Change Email</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="user_email" name="user_email" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Old Password</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" type="password" id="old_password" name="new_password2" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">New Password</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" type="password" id="new_password" name="new_password" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Confirm New Password</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" type="password" id="new_password2" name="new_password" rel="popover">
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </div>
+
+  <!--NAVBAR-->
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
       <div class="container">
-
-        <!--CODE FOR ONE TOUR-->
-        <div class="row">
-          <div class="span3">
-            <p><a href="tour.html"><img src="img3.jpg" width="190" height="70"/></a></p>
-          </div>
-          <div class="row span9">
-            <h5>NAME</h5>
-            <h5>DATE</h5>          
-            <h5>NUMBER Subscribers:</h5>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-            <img src="img2.jpg" width="40" height="40"/>
-          </div>
-        </div>
-      </br>
-      <!--END OF CODE FOR ONE TOUR-->
-
-      <!--CODE FOR ONE TOUR-->
-      <div class="row">
-        <div class="span3">
-          <p><a href="tour.html"><img src="img3.jpg" width="190" height="70"/></a></p>
-        </div>
-        <div class="row span9">
-          <h5>NAME</h5>
-          <h5>DATE</h5>          
-          <h5>NUMBER Subscribers:</h5>
-          <img src="img2.jpg" width="40" height="40"/>
-          <img src="img2.jpg" width="40" height="40"/>
-          <img src="img2.jpg" width="40" height="40"/>
-          <img src="img2.jpg" width="40" height="40"/>
-          <img src="img2.jpg" width="40" height="40"/>
-        </div>
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Social-IC</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li><a href="indexAlt.html">Home</a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tour <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="buildingsAlt.html">Buildings</a></li>
+                <li><a href="#">Tours</a></li>
+                <hr style="margin: 5px;" />                    
+                <li><a href="myTours.html">My Tours</a></li>                  
+              </ul>
+            </li>              
+            <li><a href="campus.html">Campus</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">About social-IC</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">About Technology</a></li>
+              </ul>
+            </li>     
+          </ul>
+          <ul class="nav pull-right">
+            <style>
+            .midAl
+            {
+              margin-top:5px;
+            }
+            </style>
+            <li><input type="text" class="midAl span3 search-query" name="keyword" id="keyword"placeholder="Search..."/></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">My Profile</a></li>
+                <li><a data-toggle="modal" data-target="#accSettings">Account Settings</a></li>
+                <hr style="margin: 5px;" />
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-    </br>
-    <!--END OF CODE FOR ONE TOUR-->
+    </div>
+  </div>
+  <!NAVBAR END-->
+
+  <div class="container">
 
     <!--CODE FOR ONE TOUR-->
     <div class="row">
       <div class="span3">
-        <p><a href=""><img src="img3.jpg" width="190" height="70"/></a></p>
+        <p><a href="tour.html"><img src="img3.jpg" width="190" height="70"/></a></p>
       </div>
       <div class="row span9">
         <h5>NAME</h5>
@@ -164,10 +172,58 @@
         <img src="img2.jpg" width="40" height="40"/>
         <img src="img2.jpg" width="40" height="40"/>
         <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
+        <img src="img2.jpg" width="40" height="40"/>
       </div>
     </div>
   </br>
   <!--END OF CODE FOR ONE TOUR-->
+
+  <!--CODE FOR ONE TOUR-->
+  <div class="row">
+    <div class="span3">
+      <p><a href="tour.html"><img src="img3.jpg" width="190" height="70"/></a></p>
+    </div>
+    <div class="row span9">
+      <h5>NAME</h5>
+      <h5>DATE</h5>          
+      <h5>NUMBER Subscribers:</h5>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+      <img src="img2.jpg" width="40" height="40"/>
+    </div>
+  </div>
+</br>
+<!--END OF CODE FOR ONE TOUR-->
+
+<!--CODE FOR ONE TOUR-->
+<div class="row">
+  <div class="span3">
+    <p><a href=""><img src="img3.jpg" width="190" height="70"/></a></p>
+  </div>
+  <div class="row span9">
+    <h5>NAME</h5>
+    <h5>DATE</h5>          
+    <h5>NUMBER Subscribers:</h5>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+    <img src="img2.jpg" width="40" height="40"/>
+  </div>
+</div>
+</br>
+<!--END OF CODE FOR ONE TOUR-->
 
 </br></br>
 </div>

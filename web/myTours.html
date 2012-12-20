@@ -45,6 +45,61 @@
     </head>
     <body>
 
+<!-- Modal for Account Settings
+  ==================================================-->
+  <div id="accSettings" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Account Settings</h3>
+    </div>
+    <div class="modal-body">
+      <form class="form-horizontal" id="changeSettings" method='post' action=''>
+        <fieldset>
+
+          <div class="control-group">
+            <label class="control-label">Change Name</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="user_uname" name="user_uname" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Change Email</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="user_email" name="user_email" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Old Password</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" type="password" id="old_password" name="new_password2" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">New Password</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" type="password" id="new_password" name="new_password" rel="popover">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label">Confirm New Password</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" type="password" id="new_password2" name="new_password" rel="popover">
+            </div>
+          </div>
+
+        </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+      <button class="btn btn-primary">Save</button>
+    </div>
+  </div>
+
 <!-- Modal for Tour
   ==================================================-->  
   <div id="newTour" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -147,7 +202,8 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Username <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">My Profile</a></li>
-              <li><a href="#">Account Settings</a></li>
+              <li><a data-toggle="modal" data-target="#accSettings">Account Settings</a></li>
+              <hr style="margin: 5px;" />
               <li><a href="#">Logout</a></li>
             </ul>
           </li>
