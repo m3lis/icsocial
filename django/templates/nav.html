@@ -1,0 +1,57 @@
+<div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="{{ nav.home }}">Home</a></li>
+              <li class="dropdown">
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">Tour <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{nav.tour.tours}}">Tours</a></li>
+                  <li><a href="{{nav.tour.buildings}}">Buildings</a></li>
+                </ul>
+              </li>
+              <li><a href="{{nav.campus}}">Campus</a></li>
+              <li class="dropdown">
+                <a  class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{nav.about.social_ic}}">About social-ic</a></li>
+                  <li><a href="{{nav.about.us}}">About us</a></li>
+                  <li><a href="{{nav.about.tech}}">About the tech</a></li>
+                </ul>
+              </li>
+            </ul>
+            {% if not logged %}
+            <ul class="nav pull-right">
+              <li>
+                <div>
+                  <form class="navbar-form pull-right" method="post" action="/login/">
+                    {% csrf_token %}
+                    <input name="username" type="text" class="span2" placeholder="username">
+                    <input name="password" type="password" class="span2" placeholder="password">
+                    <button type="submit" class="btn btn-info">Login</button>
+                    <button type="button" class= "btn btn-primary" data-toggle="modal" data-target="#signUp">Sign Up</a></li>
+                  </form>
+                    
+                  </div>
+                </li>
+              </ul>
+              {% else %}
+              <ul class="nav pull-right">
+              <style>
+              .midAl
+              {
+                margin-top:9px;
+              }
+              </style>
+              <li><input type="text" class="midAl span3 search-query" name="keyword" id="keyword"placeholder="Search..."/></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{ username }} <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">My Profile</a></li> 
+                  <li><a href="#">Account Settings</a></li>
+                  <li><a href="{{ nav.logout }}">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+            {% endif %}
+            </div><!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
