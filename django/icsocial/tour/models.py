@@ -9,6 +9,8 @@ class Location(models.Model):
 	coordX = models.CharField(max_length=15)
 	coordY = models.CharField(max_length=15)
 	address = models.CharField(max_length=80)
+	description = models.CharField(max_length=300, null=True)
+
 
 class Tour(models.Model):
 
@@ -17,6 +19,7 @@ class Tour(models.Model):
 	location = models.ManyToManyField(Location)
 	subscribers = models.ManyToManyField(User, related_name="sub")
 	tour_date = models.DateField(null=True)
+	description = models.CharField(max_length=300, null=True)
 
 	def get_owner_id(self):
 		return self.owner_id

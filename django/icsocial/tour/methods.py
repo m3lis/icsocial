@@ -9,6 +9,16 @@ def get_owner(name_of_tour):
 	owner_username = bs.owner_id.username
 	return owner_username
 
+def get_name(id1):
+	bs = Tour.objects.get(id=id1)
+	name_of_tour = bs.name
+	return name_of_tour
+
+def get_desc(id1):
+	bs = Tour.objects.get(id=id1)
+	desc = bs.description
+	return desc
+
 def delete_tour(name_of_tour):
 	bs = Tour.objects.filter(name=name_of_tour)
 	bs.delete()
@@ -18,8 +28,8 @@ def get_subscribers(name_of_tour):
 	subscribers_list = bs.subscribers
 	return subscribers_list
 
-def get_date(name_of_tour):
-	bs = Tour.objects.get(name=name_of_tour)
+def get_date(id1):
+	bs = Tour.objects.get(id=id1)
 	date = bs.tour_date
 	return date
 
@@ -43,6 +53,21 @@ def add_comments(user1):
 	 c.save()
 
 #Locations
+def get_build_name(id1):
+	bs = Location.objects.get(id=id1)
+	name_of_building = bs.name
+	return name_of_building
+
+def get_build_desc(id1):
+	bs = Location.objects.get(id=id1)
+	desc = bs.description
+	return desc
+
+def get_build_addr(id1):
+	bs = Location.objects.get(id=id1)
+	addr = bs.address
+	return addr
+
 def get_names(na):
 	b = Location.objects.filter(name=na)
 	return b

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from views import login,place,profile,index,logout
+from views import login,place,profile,index,logout, tours, buildings, mytours
 from django.contrib import admin
 admin.autodiscover()
 
@@ -9,10 +9,10 @@ urlpatterns = patterns('',
     url(r'^logout/', logout),
 
 
-    url(r'^places/', index),
+    url(r'^buildings/', buildings),
 
-    url(r'^tours/', index),
-    url(r'^tours/my/', index),
+    url(r'^tours/', tours),
+    url(r'^mytours', mytours),
 
     url(r'^at/(?P<nick>\w{1,50})/$', place),
     url(r'^hello/(?P<nick>\w{1,50})/$', profile),
